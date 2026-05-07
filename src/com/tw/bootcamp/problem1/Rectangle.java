@@ -1,6 +1,6 @@
 package com.tw.bootcamp.problem1;
 
-public class Rectangle {
+public class Rectangle implements Shape {
     private final int length;
     private final int breadth;
 
@@ -9,10 +9,12 @@ public class Rectangle {
         this.breadth = breadth;
     }
 
+    @Override
     public int area(){
         return length * breadth;
     }
 
+    @Override
     public int perimeter() {
         return 2 * (length + breadth);
     }
