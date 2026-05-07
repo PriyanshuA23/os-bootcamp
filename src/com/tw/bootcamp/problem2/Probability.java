@@ -9,4 +9,9 @@ public class Probability {
     public float chanceOfNotGettingTail(int noOfCoins) {
         return 1 - chanceOfGettingTail(noOfCoins);
     }
+
+    public float gettingANumberOnDice() {
+        int noOfFaces = 6;
+        return (float) 1 /noOfFaces;
+    }
 }

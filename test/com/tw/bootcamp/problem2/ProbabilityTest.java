@@ -18,4 +18,18 @@ class ProbabilityTest {
         float tailPossibility = probability.chanceOfNotGettingTail(1);
         assertEquals(0.5, tailPossibility);
     }
+
+    @Test
+    void chanceOfGettingTailsWhenTwoCoinsFlipped() {
+        Probability probability = new Probability();
+        float tailPossibility = probability.chanceOfNotGettingTail(2);
+        assertEquals(0.75, tailPossibility);
+    }
+
+    @Test
+    void probabilityOfGettingANumberOnDice() {
+        Probability probability = new Probability();
+        float possibilityOfGettingANumber = probability.gettingANumberOnDice();
+        assertEquals(0.16, possibilityOfGettingANumber,0.2);
+    }
 }
