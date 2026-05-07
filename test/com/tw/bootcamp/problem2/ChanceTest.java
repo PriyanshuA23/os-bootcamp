@@ -24,6 +24,12 @@ class ChanceTest {
     }
 
     @Test
+    void chanceOfGettingTailForTwoCoin() {
+        Chance chanceOfTail = new Chance(0.5);
+        assertEquals(new Chance(.25), chanceOfTail.and(chanceOfTail));
+    }
+
+    @Test
     void chanceOfGettingThreeOnDice() {
         Chance chanceOfGettingThreeOnDice = new Chance(0.75);
         assertEquals(new Chance(0.75), chanceOfGettingThreeOnDice);

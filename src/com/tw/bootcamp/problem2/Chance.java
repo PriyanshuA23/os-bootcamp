@@ -27,4 +27,8 @@ public class Chance {
     public Chance alteastOnce(Chance chance) {
         return  new Chance(probability + chance.probability - (probability * chance.probability));
     }
+
+    public Chance and(Chance chanceOfTail) {
+        return new Chance(chanceOfTail.probability * probability);
+    }
 }
