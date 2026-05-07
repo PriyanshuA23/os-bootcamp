@@ -6,32 +6,37 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChanceTest {
     @Test
-    void chanceOfNotTailForACoin() {
-        Chance chanceOfGettingTail = new Chance(0.5);
-        assertEquals(new Chance(0.5), chanceOfGettingTail);
+    void chanceOfGettingTailForACoin() {
+        Chance chanceOfGettingTail = Chance.createChance(0.5);
+        assertEquals(Chance.createChance(0.5), chanceOfGettingTail);
     }
 
     @Test
     void chanceOfNotgettingTailForACoin() {
-        Chance chanceOfNotGettingTail = new Chance(0.5).not();
-        assertEquals(new Chance(0.5), chanceOfNotGettingTail);
+        Chance chanceOfNotGettingTail = Chance.createChance(0.5).not();
+        assertEquals(Chance.createChance(0.5), chanceOfNotGettingTail);
     }
 
     @Test
-    void chanceOfGettingAtleastOneTailForTwoCoin() {
-        Chance chanceOfTail = new Chance(0.5);
-        assertEquals(new Chance(.75), chanceOfTail.alteastOnce(chanceOfTail));
+    void chanceOfGettingAtleastOneTailForTwoCoins() {
+        Chance chanceOfTail = Chance.createChance(0.5);
+        assertEquals(Chance.createChance(.75), chanceOfTail.or(chanceOfTail));
     }
 
     @Test
-    void chanceOfGettingTailForTwoCoin() {
-        Chance chanceOfTail = new Chance(0.5);
-        assertEquals(new Chance(.25), chanceOfTail.and(chanceOfTail));
+    void chanceOfGettingBothTailsForTwoCoins() {
+        Chance chanceOfTail = Chance.createChance(0.5);
+        assertEquals(Chance.createChance(.25), chanceOfTail.and(chanceOfTail));
     }
 
     @Test
     void chanceOfGettingThreeOnDice() {
-        Chance chanceOfGettingThreeOnDice = new Chance(0.75);
-        assertEquals(new Chance(0.75), chanceOfGettingThreeOnDice);
+        Chance chanceOfGettingThreeOnDice = Chance.createChance(0.75);
+        assertEquals(Chance.createChance(0.75), chanceOfGettingThreeOnDice);
+    }
+
+    @Test
+    void creatingInvalidChanceShouldThrowsError() {
+        assertThrows(InvalidProbabilityException.class, () -> Chance.createChance(75));
     }
 }

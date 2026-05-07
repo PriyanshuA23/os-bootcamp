@@ -5,8 +5,15 @@ import java.util.Objects;
 public class Chance {
     private final double probability;
 
-    public Chance(double probability) {
+    private Chance(double probability) {
         this.probability = probability;
+    }
+
+    public static Chance createChance(double probability) {
+        if(probability < 0.0 || probability > 1.0) {
+            throw new InvalidProbabilityException("Invalid probability");
+        }
+        return new Chance(probability);
     }
 
     @Override
@@ -21,14 +28,14 @@ public class Chance {
     }
 
     public Chance not() {
-        return new Chance(1 - probability);
+        return createChance(1 - probability);
     }
 
-    public Chance alteastOnce(Chance chance) {
-        return  new Chance(probability + chance.probability - (probability * chance.probability));
+    public Chance or(Chance chance) {
+        return createChance(probability + chance.probability - (probability * chance.probability));
     }
 
     public Chance and(Chance chanceOfTail) {
-        return new Chance(chanceOfTail.probability * probability);
+        return createChance(chanceOfTail.probability * probability);
     }
 }
