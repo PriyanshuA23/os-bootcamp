@@ -6,20 +6,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChanceTest {
     @Test
-    void chanceOfNotGettingTailForACoin() {
+    void chanceOfNotTailForACoin() {
         Chance chanceOfGettingTail = new Chance(0.5);
         assertEquals(new Chance(0.5), chanceOfGettingTail);
     }
 
     @Test
     void chanceOfNotgettingTailForACoin() {
-        Chance chanceOfNotGettingTail = new Chance(0.5);
+        Chance chanceOfNotGettingTail = new Chance(0.5).not();
         assertEquals(new Chance(0.5), chanceOfNotGettingTail);
     }
 
     @Test
-    void changeOfGettingTailsForTwoCoin() {
-        Chance chanceOfGettingTailForTwoCoin = new Chance(0.75);
-        assertEquals(new Chance(0.75), chanceOfGettingTailForTwoCoin);
+    void chanceOfGettingAtleastOneTailForTwoCoin() {
+        Chance chanceOfTail = new Chance(0.5);
+        assertEquals(new Chance(.75), chanceOfTail.alteastOnce(chanceOfTail));
+    }
+
+    @Test
+    void chanceOfGettingThreeOnDice() {
+        Chance chanceOfGettingThreeOnDice = new Chance(0.75);
+        assertEquals(new Chance(0.75), chanceOfGettingThreeOnDice);
     }
 }

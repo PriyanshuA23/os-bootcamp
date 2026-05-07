@@ -19,4 +19,12 @@ public class Chance {
     public int hashCode() {
         return Objects.hashCode(probability);
     }
+
+    public Chance not() {
+        return new Chance(1 - probability);
+    }
+
+    public Chance alteastOnce(Chance chance) {
+        return  new Chance(probability + chance.probability - (probability * chance.probability));
+    }
 }
