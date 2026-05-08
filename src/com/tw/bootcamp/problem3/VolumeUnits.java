@@ -10,6 +10,10 @@ public enum VolumeUnits {
     }
 
     public double convertToBase(double value) {
-        return value *this.baseUnitValue;
+        return value * this.baseUnitValue;
+    }
+
+    public double convertToLiter(double volume) {
+        return volume / VolumeUnits.LITERS.baseUnitValue;
     }
 }

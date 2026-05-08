@@ -6,18 +6,22 @@ public class Length {
     private final double value;
     private final LengthUnits lengthUnits;
 
-    public Length(double value, LengthUnits lengthUnits) {
+    private Length(double value, LengthUnits lengthUnits) {
         this.value = value;
         this.lengthUnits = lengthUnits;
     }
 
-    public boolean compareLength(Length lenght) {
-        return Double.compare(lengthUnits.convertToBase(value), lenght.lengthUnits.convertToBase(lenght.value)) == 0;
+    public static Length createLength(double value, LengthUnits lengthUnits) {
+        return new Length(value, lengthUnits);
+    }
+
+    public boolean compareLength(Length length) {
+        return Double.compare(lengthUnits.convertToBase(value), length.lengthUnits.convertToBase(length.value)) == 0;
     }
 
     public Length add(Length length) {
         double addedLength = lengthUnits.convertToBase(value) + length.lengthUnits.convertToBase(length.value);
-        return new Length(lengthUnits.convertToInch(addedLength), LengthUnits.INCHES);
+        return createLength(lengthUnits.convertToInch(addedLength), LengthUnits.INCHES);
     }
 
     @Override

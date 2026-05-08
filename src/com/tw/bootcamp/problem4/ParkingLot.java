@@ -1,0 +1,34 @@
+package com.tw.bootcamp.problem4;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class ParkingLot {
+
+    private final ArrayList<String> parkingLot;
+    private final int parkingLotSize;
+
+    public ParkingLot(int parkingLotSize) {
+        this.parkingLotSize = parkingLotSize;
+        this.parkingLot = new ArrayList<>(parkingLotSize);
+    }
+
+    public void parkACar() {
+        parkingLot.add("car");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof ParkingLot that)) return false;
+        return parkingLotSize == that.parkingLotSize && Objects.equals(parkingLot, that.parkingLot);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(parkingLot, parkingLotSize);
+    }
+
+    public boolean isFull() {
+        return parkingLot.size() == parkingLotSize;
+    }
+}

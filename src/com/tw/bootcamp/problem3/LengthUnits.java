@@ -15,6 +15,6 @@ public enum LengthUnits {
     }
 
     public double convertToInch(double length) {
-        return  length / LengthUnits.INCHES.baseCentimeterValue;
+        return length / LengthUnits.INCHES.baseCentimeterValue;
     }
 }
