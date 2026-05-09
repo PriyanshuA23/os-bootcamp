@@ -6,15 +6,22 @@ import java.util.Objects;
 public class ParkingLot {
 
     private final ArrayList<String> parkingLot;
+    private final String id;
     private final int parkingLotSize;
 
-    public ParkingLot(int parkingLotSize) {
+    private ParkingLot(int parkingLotSize, String id) {
         this.parkingLotSize = parkingLotSize;
         this.parkingLot = new ArrayList<>(parkingLotSize);
+        this.id = id;
     }
 
-    public void parkACar() {
+    public static ParkingLot createParkingLot(int parkingLotSize, String id) {
+        return new ParkingLot(parkingLotSize, id);
+    }
+
+    public String parkACar() {
         parkingLot.add("car");
+        return this.id;
     }
 
     @Override
