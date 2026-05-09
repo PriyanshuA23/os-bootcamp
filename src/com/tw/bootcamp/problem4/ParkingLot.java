@@ -19,9 +19,8 @@ public class ParkingLot {
         return new ParkingLot(parkingLotSize, id);
     }
 
-    public String parkACar() {
-        parkingLot.add("car");
-        return this.id;
+    public boolean parkACar() {
+        return parkingLot.add("car");
     }
 
     @Override

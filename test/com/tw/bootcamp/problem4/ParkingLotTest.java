@@ -2,9 +2,7 @@ package com.tw.bootcamp.problem4;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,8 +11,7 @@ class ParkingLotTest {
     @Test
     void parkACarInAParkingLot(){
         ParkingLot parkingLot = ParkingLot.createParkingLot(10, "P1");
-        String lotId = parkingLot.parkACar();
-        assertEquals("P1", lotId);
+        assertTrue(parkingLot.parkACar());
     }
 
     @Test
@@ -31,8 +28,7 @@ class ParkingLotTest {
         ParkingLot parkingLot2 = ParkingLot.createParkingLot(10, "P2");
         parkingLots.put("P1", parkingLot1);
         parkingLots.put("P2", parkingLot2);
-        ParkingLotHandler parkingLotHandler = new ParkingLotHandler(parkingLots);
-        String parkingLotId = parkingLotHandler.parkACar();
-        assertEquals("P1",parkingLotId);
+        ParkingLotHandler parkingLotHandler = ParkingLotHandler.createParkingLotHandler(parkingLots);
+        assertTrue(parkingLotHandler.parkACar());
     }
 }
