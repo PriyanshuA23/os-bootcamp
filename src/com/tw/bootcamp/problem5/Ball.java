@@ -1,4 +1,8 @@
 package com.tw.bootcamp.problem5;
 
-public class Ball {
+public enum Ball {
+    YELLOWBALL,
+    BLUEBALL,
+    REDBALL,
+    GREENBALL,
 }
